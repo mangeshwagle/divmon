@@ -1,28 +1,28 @@
 package com.iiitb.divmon.bean;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 public class User
 {
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
+	
 	@NotBlank
 	String name;
-	@NotBlank
-	String email;
-	@NotBlank
-	String password;
 	
-	@ManyToMany(mappedBy = "userSet")
-	Set<Group> groupSet = new HashSet<Group>();  
+	@NotBlank
+	@Column(unique = true)
+	String email;
+	
+	@NotBlank
+	String password; 
 	
 	public int getId()
 	{
@@ -58,5 +58,11 @@ public class User
 	public void setPassword(String password)
 	{
 		this.password = password;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
 	}
 }

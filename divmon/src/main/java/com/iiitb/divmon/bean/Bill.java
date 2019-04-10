@@ -3,6 +3,8 @@ package com.iiitb.divmon.bean;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
@@ -10,11 +12,15 @@ import javax.validation.constraints.NotBlank;
 public class Bill
 {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
+	
 	@NotBlank
 	String description;
+	
 	@NotBlank
 	float amount;
+	
 	@NotBlank
 	Date date;
 	
