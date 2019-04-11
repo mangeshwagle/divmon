@@ -22,7 +22,6 @@ public class UserService
 		User userFromDb = userRepository.findByEmail(user.getEmail());
 		if (user.getPassword().equals(userFromDb.getPassword()))
 		{
-			System.out.println(userFromDb);
 			userFromDb.setPassword("******");
 			return userFromDb;
 		}

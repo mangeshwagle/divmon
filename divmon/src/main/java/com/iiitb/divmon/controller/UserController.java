@@ -19,7 +19,7 @@ public class UserController
 	private UserService userService;
 
 	@RequestMapping(method = RequestMethod.POST, value = "/register")
-	public void addUser(@RequestBody User user)
+	public void register(@RequestBody User user)
 	{
 		userService.addUser(user);
 		System.out.println(user);
@@ -29,12 +29,10 @@ public class UserController
 	public ResponseEntity<User> login(@RequestBody User user)
 	{
 		User userFromDb = userService.verifyLogin(user);
-		System.out.println(user);
-		System.out.println(userFromDb);
 
 		if (userFromDb != null)
 			return new ResponseEntity<User>(userFromDb, HttpStatus.OK);
 
-		return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
 	}
 }
