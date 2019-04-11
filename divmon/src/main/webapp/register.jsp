@@ -26,7 +26,7 @@
 </head>
 
 <body class="text-center">
-	<form class="form-signin">
+	<form class="form-signin" onsubmit="register()">
 		<h1 class="h3 mb-3 font-weight-normal">Create A New Account</h1>
 		
 		<label for="name" class="sr-only">Full Name</label>
@@ -41,7 +41,7 @@
 		<label for="confirm_password" class="sr-only">Confirm Password</label>
 		<input type="password" id="confirm_password" class="form-control" placeholder="Confirm Password" onkeyup="validatePassword()" required>
 		
-		<button class="btn btn-lg btn-primary btn-block" type="submit" onclick="register()">Sign up</button>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
 		<p class="mt-5 mb-3 text-muted">&copy; DivMon 2019-2020</p>
 	</form>
 </body>
