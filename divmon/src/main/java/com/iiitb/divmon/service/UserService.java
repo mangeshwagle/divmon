@@ -19,13 +19,13 @@ public class UserService
 
 	public User verifyLogin(User user)
 	{
-		User userFromDb = userRepository.findByEmail(user.getEmail());
-		if (user.getPassword().equals(userFromDb.getPassword()))
+		User userFromDb = userRepository.findByEmail(user.getEmail()).orElse(null);
+		if (userFromDb == null || !user.getPassword().equals(userFromDb.getPassword()))
 		{
-			userFromDb.setPassword("******");
-			return userFromDb;
+			return null;
 		}
-		return null;
+		userFromDb.setPassword("******");
+		return userFromDb;
 	}
 
 }

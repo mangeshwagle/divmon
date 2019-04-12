@@ -22,7 +22,6 @@ public class UserController
 	public void register(@RequestBody User user)
 	{
 		userService.addUser(user);
-		System.out.println(user);
 	}
 
 	@RequestMapping("/login")

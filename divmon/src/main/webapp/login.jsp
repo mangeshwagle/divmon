@@ -19,10 +19,14 @@
 
 <!-- Custom styles for this template -->
 <link href="/css/login.css" rel="stylesheet">
+
+<!-- Custom Scripts -->
+<script src="/js/login.js" type="text/javascript"></script>
+
 </head>
 
 <body class="text-center">
-	<form class="form-signin">
+	<form class="form-signin" onsubmit="login()">
 		<h1 class="h3 mb-3 font-weight-normal">Login</h1>
 		
 		<label for="email" class="sr-only">Email address</label>
