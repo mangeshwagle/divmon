@@ -1,5 +1,7 @@
 package com.iiitb.divmon.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,4 +36,12 @@ public class UserController
 
 		return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
 	}
+	@RequestMapping("/allUsers")
+	public List<User> getAllUser()
+	{
+       return   userService.getAllUser();
+	
+	}
+	
+	
 }

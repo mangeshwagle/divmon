@@ -28,6 +28,10 @@ HELP.md
 ### VS Code ###
 .vscode/
 
+<<<<<<< HEAD
 ### DS_Store File ###
 .DS_Store
 
+=======
+.DS_Store
+>>>>>>> refs/remotes/origin/master

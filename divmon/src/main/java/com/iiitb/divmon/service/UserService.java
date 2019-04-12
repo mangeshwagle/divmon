@@ -1,5 +1,11 @@
 package com.iiitb.divmon.service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +33,31 @@ public class UserService
 		userFromDb.setPassword("******");
 		return userFromDb;
 	}
-
+	
+	public List<User> getAllUser()
+	{
+		List<User> u = new ArrayList<User>();
+		Iterable<User> i =   userRepository.findAll();
+		i.forEach(x -> u.add(x));
+		
+		
+		return u;
+	}
+	
+	public User getUserById(int id)
+	{
+		User u= userRepository.findById(id).orElse(null);
+		return u;
+	}
+	
+	public List<User> getAllUserById(List<Integer> ids)
+	{
+	   	List<User> users = new LinkedList<User>();
+	   	Iterable<User> i = userRepository.findAllById(ids);
+	   	i.forEach(x ->{ x.setPassword("******"); 
+	   					users.add(x);
+	   	});
+	   	
+		 return users;
+	}
 }
