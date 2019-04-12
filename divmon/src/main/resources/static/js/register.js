@@ -17,12 +17,11 @@ function register()
 	var fullname = document.getElementById("fullname").value;
 	var email = document.getElementById("email").value;
 	var password = document.getElementById("password").value;
-	alert("f: " + fullname + " e: " + email + " p: " + password);
 
 	var user = JSON.stringify({
-		"name" : fullname,
-		"email" : email,
-		"password" : password
+		"name"		: fullname,
+		"email"		: email,
+		"password"	: password
 	});
 	$.ajax
 	({
@@ -30,6 +29,8 @@ function register()
 		url : "http://localhost:8055/register",
 		contentType : "application/json",
 		data : user,
+		async: false,
+	    cache: false,
 		error : function(jqXHR, exception) {
 			alert("Unable to register");
 		},

@@ -4,9 +4,10 @@ import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
+import com.iiitb.divmon.bean.Friends;
 import com.iiitb.divmon.bean.User;
 
-public interface UserRepository extends CrudRepository<User, Integer>
+public interface FriendRepository extends CrudRepository<Friends , Integer>
 {
-	public Optional<User> findByEmail(String email);
+	public Iterable<Friends> findByUid1(int uid1);
 }
