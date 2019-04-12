@@ -18,13 +18,13 @@ public class FriendService {
 	@Autowired
 	private UserService userService;
 
-	public boolean addFriend(Friends f) {
+	public boolean addFriend(Friends friend) {
 		try {
-			if (f.getUid1() != f.getUid2()) {
-				if (friendRepository.save(f) != null) {
+			if (friend.getUid1() != friend.getUid2()) {
+				if (friendRepository.save(friend) != null) {
 					Friends reverseFriend = new Friends();
-					reverseFriend.setUid1(f.getUid2());
-					reverseFriend.setUid2(f.getUid1());
+					reverseFriend.setUid1(friend.getUid2());
+					reverseFriend.setUid2(friend.getUid1());
 					if (friendRepository.save(reverseFriend) != null) {
 						return true;
 					}
@@ -32,7 +32,6 @@ public class FriendService {
 			}
 			return false;
 		} catch (Exception e) {
-
 			e.printStackTrace();
 			return false;
 		}
@@ -56,7 +55,5 @@ public class FriendService {
 			friendIds.add(f.getUid2());
 		}
 		return friendIds;
-
 	}
-
 }

@@ -24,22 +24,19 @@ public class FriendController {
 	@Autowired
 	private UserService userService;
 
-//	@RequestMapping(method = RequestMethod.POST, value = "/addfriend")
-//	public ResponseEntity<Void> addFriend(@RequestBody Friends f) {
-//		if (friendService.addFriend(f)) {
-//			return new ResponseEntity<Void>(HttpStatus.OK);
-//		}
-//		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-//	}
+	@RequestMapping(method = RequestMethod.POST, value = "/addfriend")
+	public ResponseEntity<Void> addFriend(@RequestBody Friends friend) {
+		if (friendService.addFriend(friend)) {
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		}
+		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/showfriends/{id}")
 	public List<User> showFriends(@PathVariable int id) {
-		System.out.println("hello" + id);
-
 		List<Integer> ids = friendService.showFriendsId(id);
 		List<User> friends = userService.getAllUserById(ids);
 		return friends;
-
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/addfriend")
