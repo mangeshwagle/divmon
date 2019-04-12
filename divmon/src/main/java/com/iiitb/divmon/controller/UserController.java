@@ -36,7 +36,7 @@ public class UserController
 
 		return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
 	}
-	@RequestMapping("/allUsers")
+	@RequestMapping("/allusers")
 	public List<User> getAllUser()
 	{
        return   userService.getAllUser();

@@ -17,58 +17,46 @@ public class FriendService {
 	private FriendRepository friendRepository;
 	@Autowired
 	private UserService userService;
-	
-	public boolean addFriend(Friends f)
-	{	
-		try
-		{
-		if(f.getUid1()  != f.getUid2())
-        {
-        	if(friendRepository.save(f)!= null)
-        	{
-	        	Friends reverseFriend = new Friends();
-	        	reverseFriend.setUid1(f.getUid2());
-	        	reverseFriend.setUid2(f.getUid1());
-	        	if(friendRepository.save(reverseFriend)!= null)
-	        	{
-	        		return true;
-	        	}
-        	}
-        }
-		return false;
-		}
-		catch(Exception e)
-		{
-			
+
+	public boolean addFriend(Friends f) {
+		try {
+			if (f.getUid1() != f.getUid2()) {
+				if (friendRepository.save(f) != null) {
+					Friends reverseFriend = new Friends();
+					reverseFriend.setUid1(f.getUid2());
+					reverseFriend.setUid2(f.getUid1());
+					if (friendRepository.save(reverseFriend) != null) {
+						return true;
+					}
+				}
+			}
+			return false;
+		} catch (Exception e) {
+
 			e.printStackTrace();
 			return false;
 		}
 	}
-	
-	public List<Friends> getAllFriends(User user)
-	{
-		List<Friends> friends= new LinkedList<Friends>();
-		Iterable<Friends> i=friendRepository.findByUid1(user.getId());
+
+	public List<Friends> getAllFriends(User user) {
+		List<Friends> friends = new LinkedList<Friends>();
+		Iterable<Friends> i = friendRepository.findByUid1(user.getId());
 		i.forEach(x -> friends.add((Friends) x));
 		return friends;
-		
+
 	}
-	
-	public List<Integer> showFriendsId( int id)
-	{
+
+	public List<Integer> showFriendsId(int id) {
 		System.out.println("hello" + id);
 		User user = userService.getUserById(id);
 		List<Friends> friends = getAllFriends(user);
-		List<Integer> friendIds =new LinkedList<Integer>();
-		
-		
-		for (Friends f : friends)
-		{
+		List<Integer> friendIds = new LinkedList<Integer>();
+
+		for (Friends f : friends) {
 			friendIds.add(f.getUid2());
 		}
 		return friendIds;
-		
 
 	}
-	
+
 }

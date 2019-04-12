@@ -9,11 +9,10 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(uniqueConstraints= {@UniqueConstraint(columnNames={"uid1","uid2"})})
-public class Friends 
-{
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "uid1", "uid2" }) })
+public class Friends {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int uid1;
 	private int uid2;
