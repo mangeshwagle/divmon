@@ -1,6 +1,5 @@
 package com.iiitb.divmon.controller;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,35 +17,29 @@ import com.iiitb.divmon.service.FriendService;
 import com.iiitb.divmon.service.UserService;
 
 @RestController
-public class FriendController {
+public class FriendController 
+{
 	@Autowired
 	private FriendService friendService;
 	@Autowired
 	private UserService userService;
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/addfriend")
-	public ResponseEntity <Void>addFriend(@RequestBody Friends f)
+	public ResponseEntity<Void> addFriend(@RequestBody Friends friend)
 	{
-        	if(friendService.addFriend(f))
+        	if(friendService.addFriend(friend))
         	{
         		return new ResponseEntity<Void>(HttpStatus.OK);
         	}
     		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);		
 	}
 	
-
-	
-
-	
 	@RequestMapping(method = RequestMethod.GET, value = "/showfriends/{id}")
 	public List<User> showFriends(@PathVariable int id)
 	{
-		System.out.println("hello" + id);
-		
 		List<Integer> ids = friendService.showFriendsId(id);
 		List<User> friends = userService.getAllUserById(ids);
 		return friends;
-
 	}
 	
 }

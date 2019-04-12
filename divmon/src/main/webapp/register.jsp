@@ -3,10 +3,6 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
 <!-- <link rel="icon" href="../../../../favicon.ico"> -->
 
 <title>Register | DivMon</title>
@@ -26,10 +22,11 @@
 </head>
 
 <body class="text-center">
+<%@include file="/menu/home_menu.jsp" %>
 	<form class="form-signin" onsubmit="register()">
 		<h1 class="h3 mb-3 font-weight-normal">Create A New Account</h1>
 		
-		<label for="name" class="sr-only">Full Name</label>
+		<label for="fullname" class="sr-only">Full Name</label>
 		<input type="text" id="fullname" class="form-control" placeholder="Full Name" required autofocus>
 		
 		<label for="email" class="sr-only">Email Address</label>

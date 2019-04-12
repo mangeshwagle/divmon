@@ -3,10 +3,6 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
 <!-- <link rel="icon" href="../../../../favicon.ico"> -->
 
 <title>Login | DivMon</title>
@@ -26,6 +22,7 @@
 </head>
 
 <body class="text-center">
+<%@include file="/menu/home_menu.jsp" %>
 	<form class="form-signin" onsubmit="login()">
 		<h1 class="h3 mb-3 font-weight-normal">Login</h1>
 		
