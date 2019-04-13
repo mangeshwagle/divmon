@@ -23,7 +23,7 @@
 
 <body class="text-center">
 <%@include file="/menu/home_menu.jsp" %>
-	<form class="form-signin" onsubmit="login()">
+	<form class="form-signin" onsubmit="login()" method="post" action="profile.jsp">
 		<h1 class="h3 mb-3 font-weight-normal">Login</h1>
 		
 		<label for="email" class="sr-only">Email address</label>
