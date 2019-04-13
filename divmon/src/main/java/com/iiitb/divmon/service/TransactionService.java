@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.iiitb.divmon.bean.FriendTotal;
 import com.iiitb.divmon.bean.Friends;
 import com.iiitb.divmon.bean.Transaction;
@@ -21,12 +20,11 @@ public class TransactionService {
 	private TransactionRepository transactionRepository;
 	@Autowired
 	private UserService userService;
-	
-	public void addTransaction(Transaction transaction)
-	{
+
+	public void addTransaction(Transaction transaction) {
 		transactionRepository.save(transaction);
 	}
-	
+
 	public List<Transaction> borrowedMoneyTransactions(int id) {
 		List<Transaction> transactions = new LinkedList<Transaction>();
 		Iterable<Transaction> i = transactionRepository.findByBorrowerId(id);
@@ -95,5 +93,13 @@ public class TransactionService {
 		}
 		return friendsTotal;
 		
+	}
+	
+	public List<Transaction> lentMoneyTransactions(int id) {
+		List<Transaction> transactions = new LinkedList<Transaction>();
+		Iterable<Transaction> i = transactionRepository.findByLenderId(id);
+		i.forEach(x -> transactions.add((Transaction) x));
+		return transactions;
+
 	}
 }

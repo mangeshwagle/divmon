@@ -15,15 +15,16 @@ function login()
 		data : user,
 		async: false,
 	    cache: false,
-		statusCode: {
-		    200:	function(user)
-		    		{
-		    			sessionStorage.setItem("user", JSON.stringify(user));
-		    		},
-		    204: 	function()
-		    		{
-		      			alert("Incorrect email or password!");
-		    		}
-		  }
+		statusCode:
+		{
+			200:	function(user)
+					{
+						sessionStorage.setItem("user", JSON.stringify(user));
+					},
+			204:	function()
+					{
+						alert("Incorrect email or password!");
+					}
+		}
 	});
 }
