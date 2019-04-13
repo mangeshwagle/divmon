@@ -15,7 +15,7 @@ public class Transaction {
 	private int lenderId;
 	private int borrowerId;
 	private double amount;
-	private float share;
+	private double share;
 	private boolean paid;
 	private String description;
 	private Date date;
@@ -52,7 +52,7 @@ public class Transaction {
 		this.amount = amount;
 	}
 
-	public float getShare() {
+	public double getShare() {
 		return share;
 	}
 
@@ -83,5 +83,13 @@ public class Transaction {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
+	@Override
+	public String toString() {
+		return "Transaction [id=" + id + ", lenderId=" + lenderId + ", borrowerId=" + borrowerId + ", amount=" + amount
+				+ ", share=" + share + ", paid=" + paid + ", description=" + description + ", date=" + date + "]";
+	}
+	
+	
 
 }
