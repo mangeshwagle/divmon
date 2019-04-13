@@ -11,7 +11,7 @@ $(document).ready(function() {
 	$('.navbar-nav > li > a[href="'+pathname+'"]').parent().addClass('active');
 	var user = JSON.parse(sessionStorage.getItem("user"));
 	if(user == null)
-		window.location.href = "index.jsp";
+		window.location.href = "login.jsp";
 	document.getElementById("username").innerHTML = "DivMon &nbsp;&nbsp;| &nbsp;&nbsp;" + user.name;
 })
 function logout()

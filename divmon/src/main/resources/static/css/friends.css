@@ -36,4 +36,4 @@ body{ overflow-x: hidden; /* Prevent scroll on narrow devices */ }
 
 .lh-150 { line-height: 1.5; }
 
-#friendEmail { margin-right: 20px; }
+.divmonForm { margin-right: 20px; }

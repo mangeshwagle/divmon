@@ -3,18 +3,23 @@ $(document).ready(function() {
 	showFriends();
 })
 
+var friends = {};
+
+sessionStorage.removeItem("friend");
+
 function showFriends()
 {
 	var api = "http://localhost:8055/showfriends/" + user.id;
 	var friendList = "";
 	$.get(api , function(data, status) {
+		friends = data;
 	    for(var i = 0; i < data.length; i++)
 	    {
 	    	friendList += 	'<div class="media text-muted pt-3">' +
 					    	'<div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">' +
 					    	'<div class="d-flex justify-content-between align-items-center w-100">' +
 					    	'<strong class="text-gray-dark">' + data[i].name + '</strong>' +
-					    	'<a href="#">' + data[i].id + '</a>' +
+					    	'<a href="#" onclick=friendTransaction(' + i + ')>' + data[i].id + '</a>' +
 					    	'</div>' +
 					    	'<span class="d-block">' + data[i].email + '</span>' +
 					    	'</div>' +
@@ -51,4 +56,9 @@ function addFriend()
 					}
 		}
 	});
+}
+function friendTransaction(id)
+{
+	sessionStorage.setItem("friend", JSON.stringify(friends[id]));
+	window.location.href = "friendtransaction.jsp";
 }

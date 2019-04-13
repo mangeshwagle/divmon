@@ -35,7 +35,6 @@ function register()
 			alert("Unable to register");
 		},
 		success : function() {
-			alert("Sucessfully registered");
 		}
 	});
 }

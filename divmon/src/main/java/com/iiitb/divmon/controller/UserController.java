@@ -16,7 +16,6 @@ import com.iiitb.divmon.service.UserService;
 @RestController
 public class UserController
 {
-
 	@Autowired
 	private UserService userService;
 
@@ -36,12 +35,11 @@ public class UserController
 
 		return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
 	}
+
 	@RequestMapping("/allusers")
 	public List<User> getAllUser()
 	{
-       return   userService.getAllUser();
-	
+		return userService.getAllUser();
+
 	}
-	
-	
 }

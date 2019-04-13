@@ -23,7 +23,7 @@
 
 <body class="text-center">
 <%@include file="/menu/home_menu.jsp" %>
-	<form class="form-signin" onsubmit="register()">
+	<form class="form-signin" onsubmit="register()" method="post" action="login.jsp">
 		<h1 class="h3 mb-3 font-weight-normal">Create A New Account</h1>
 		
 		<label for="fullname" class="sr-only">Full Name</label>
