@@ -66,11 +66,11 @@ public class TransactionController
 	public void borrowedMoney(@PathVariable int id)
 	{
 
-		List<Transaction> ts = transactionService.borrowedMoneyTransactions(id);
+		List<Transaction> transactions = transactionService.borrowedMoneyTransactions(id);
 		Double borrowedMoney = 0D;
-		for (Transaction x : ts)
+		for (Transaction ts : transactions)
 		{
-			borrowedMoney += x.getShare();
+			borrowedMoney += ts.getShare();
 		}
 		System.out.println(borrowedMoney);
 	}
@@ -79,14 +79,13 @@ public class TransactionController
 	public void lentMoney(@PathVariable int id)
 	{
 
-		List<Transaction> ts = transactionService.lentMoneyTransactions(id);
+		List<Transaction> transactions = transactionService.lentMoneyTransactions(id);
 		Double lentMoney = 0D;
-		for (Transaction x : ts)
+		for (Transaction ts : transactions)
 		{
-			lentMoney += x.getShare();
+			lentMoney += ts.getShare();
 		}
 		System.out.println(lentMoney);
-
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/total/{id}")

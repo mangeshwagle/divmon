@@ -3,7 +3,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- <link rel="icon" href="../../../../favicon.ico"> -->
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="icon" type="image/png" href="/images/favicon.png">
 
 <title>Friends Transactions| DivMon</title>
 
@@ -31,6 +32,7 @@
 				<h6>Description</h6>
 				<h6>Date</h6>
 				<h6>Time</h6>
+				<h6>Paid By</h6>	
 				<h6>Share</h6>				
             </div>
           </div>

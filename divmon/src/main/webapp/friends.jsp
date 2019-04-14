@@ -3,7 +3,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- <link rel="icon" href="../../../../favicon.ico"> -->
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="icon" type="image/png" href="/images/favicon.png">
 
 <title>Friends | DivMon</title>
 
