@@ -1,11 +1,21 @@
 package com.iiitb.divmon.bean;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
+
+import org.hibernate.annotations.Fetch;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class User
@@ -24,6 +34,16 @@ public class User
 	@NotBlank
 	String password; 
 	
+	@ManyToMany(mappedBy="userSet" , fetch = FetchType.EAGER)
+	@JsonManagedReference
+	 Set<Groups> groupSet;
+	
+	public Set<Groups> getGroupSet() {
+		return groupSet;
+	}
+	public void setGroupSet(Set<Groups> groupSet) {
+		this.groupSet = groupSet;
+	}
 	public int getId()
 	{
 		return id;
