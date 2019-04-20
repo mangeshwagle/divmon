@@ -159,31 +159,4 @@ public class TransactionController
 		friend.setUid2(friendId2);
 		return transactionDao.findTransactionsOfFriend(friend);
 	}
-	
-	@RequestMapping(method = RequestMethod.POST, value = "/settletransaction")
-	public void settleTransaction(@RequestBody int transactionId)
-	{
-		try
-		{
-			transactionService.settleTransaction(transactionId);
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	@RequestMapping(method = RequestMethod.POST, value = "/settlealltransaction")
-	public void settleTraAllnsaction(@RequestBody List<Integer> transactionIds)
-	{
-		try
-		{
-			transactionService.settleAllTransaction(transactionIds);
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-	
 }
