@@ -104,4 +104,20 @@ public class TransactionService
 		i.forEach(x -> transactions.add((Transaction) x));
 		return transactions;
 	}
+	
+	public void settleTransaction(int transactionId) 
+	{
+		Transaction transaction = transactionRepository.findById(transactionId).get();
+		transaction.setPaid(true);
+		transactionRepository.save(transaction);
+	}
+
+	public void settleAllTransaction(List<Integer> transactionIds) {
+		
+		for(int id: transactionIds)
+		{
+			settleTransaction(id);
+		}
+		
+	}
 }

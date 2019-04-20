@@ -19,7 +19,7 @@ public class Bill
 	String description;
 	
 	@NotBlank
-	float amount;
+	double amount;
 	
 	@NotBlank
 	Date date;
@@ -42,11 +42,11 @@ public class Bill
 		this.description = description;
 	}
 	
-	public float getAmount()
+	public double getAmount()
 	{
 		return amount;
 	}
-	public void setAmount(float amount)
+	public void setAmount(double amount)
 	{
 		this.amount = amount;
 	}
