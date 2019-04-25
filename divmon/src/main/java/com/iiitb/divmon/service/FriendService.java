@@ -80,25 +80,26 @@ public class FriendService
 		i.forEach(x -> transactions.add((Transaction) x));
 		List<FriendTotal> friendsTotal = new ArrayList<FriendTotal>();
 		HashMap<Integer, FriendTotal> h = new HashMap<Integer, FriendTotal>();
+		Iterable<Friends> j = friendRepository.findByUid1(id);
+
+		j.forEach(friend ->
+							{
+								FriendTotal friendTotal = new FriendTotal();
+								User user = userService.getUserById(friend.getUid2());
+								friendTotal.setUser(user);
+								friendTotal.setTotal(0);
+								h.put(friend.getUid2(), friendTotal);
+							});
+
 		for (Transaction transaction : transactions)
 		{
 			if (transaction.isPaid() == false)
 			{
 				int lender = transaction.getLenderId();
-				if (h.containsKey(lender))
-				{
-					double total = h.get(lender).getTotal();
-					total = total + transaction.getShare();
-					h.get(lender).setTotal(total);
-				}
-				else
-				{
-					FriendTotal friendTotal = new FriendTotal();
-					User user = userService.getUserById(lender);
-					friendTotal.setUser(user);
-					friendTotal.setTotal(+transaction.getShare());
-					h.put(lender, friendTotal);
-				}
+				double total = h.get(lender).getTotal();
+				total = total + transaction.getShare();
+				h.get(lender).setTotal(total);
+
 			}
 		}
 
@@ -110,20 +111,9 @@ public class FriendService
 			if (transaction.isPaid() == false)
 			{
 				int borrower = transaction.getBorrowerId();
-				if (h.containsKey(borrower))
-				{
-					double total = h.get(borrower).getTotal();
-					total = total - transaction.getShare();
-					h.get(borrower).setTotal(total);
-				}
-				else
-				{
-					FriendTotal friendTotal = new FriendTotal();
-					User user = userService.getUserById(borrower);
-					friendTotal.setUser(user);
-					friendTotal.setTotal(-transaction.getShare());
-					h.put(borrower, friendTotal);
-				}
+				double total = h.get(borrower).getTotal();
+				total = total - transaction.getShare();
+				h.get(borrower).setTotal(total);
 			}
 		}
 		for (int key : h.keySet())
