@@ -1,5 +1,6 @@
 package com.iiitb.divmon.controller;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -25,20 +26,25 @@ public class GroupsController
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(method = RequestMethod.POST, value = "/creategroup")
-	public void createGroup(@RequestParam Groups groups)
+	@RequestMapping(method = RequestMethod.GET, value = "/creategroup/{name}/{userid}")
+	public void createGroup(@PathVariable(name="userid") int userid,@PathVariable(name="name") String name )
 	{
+		Set<User> ust = new HashSet<User>();
+		ust.add(userService.getUserById(userid));
+		Groups groups = new Groups();
+		groups.setName(name);
+		groups.setUserSet(ust);
 		groupsService.add(groups);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/addfriendstogroup/{id}")
-	public void addFriendsToGroup(@RequestParam List<Integer> friendsId, @PathVariable(name = "id") int groupId)
+	@RequestMapping(method = RequestMethod.PUT, value = "/adduserstogroup/{id}")
+	public void addUsersToGroup(@RequestParam List<String> emails, @PathVariable(name = "id") int groupId)
 	{
 		Groups groups = groupsService.getGroupById(groupId);
 		Set<User> ust = groups.getUserSet();
-		for (int userId : friendsId)
+		for (String email : emails)
 		{
-			User user = userService.getUserById(userId);
+			User user = userService.getUserByEmail(email);
 			ust.add(user);
 		}
 		groups.setUserSet(ust);
