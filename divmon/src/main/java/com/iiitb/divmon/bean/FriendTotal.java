@@ -3,7 +3,7 @@ package com.iiitb.divmon.bean;
 public class FriendTotal
 {
 	private User user;
-	private double total;
+	private double total = 0;
 
 	public double getTotal()
 	{

@@ -13,11 +13,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-@Entity
+@Entity(name = "`groups`")
 public class Groups
 {
 	@Id
@@ -32,7 +30,7 @@ public class Groups
     joinColumns = @JoinColumn (name = "group_id", referencedColumnName = "id"),   
     inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
 	@JsonIgnore
-	Set<User> userSet;
+	Set<User> userSet = new HashSet<User>();
 	
 	public Set<User> getUserSet() {
 		return userSet;

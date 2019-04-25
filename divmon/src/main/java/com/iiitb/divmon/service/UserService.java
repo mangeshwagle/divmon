@@ -19,7 +19,6 @@ public class UserService
 	public void addUser(User user)
 	{
 		userRepository.save(user);
-		//System.out.println(user.getId()+"hellooooooooo");
 	}
 
 	public User verifyLogin(User user)
@@ -67,5 +66,4 @@ public class UserService
 
 		return userFromDb;
 	}
-
 }

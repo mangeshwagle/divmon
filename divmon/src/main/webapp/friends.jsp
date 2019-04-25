@@ -29,8 +29,8 @@
       <div class="media text-muted pt-3">
           <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <div class="d-flex justify-content-between align-items-center w-100">
-              <input class="form-control" type="text" placeholder="Enter Your Friend's Email ID" aria-label="friendEmail" id="friendEmail">
-              <button class="btn btn-success" onclick="addFriend()">Add Friend</button>
+              <input class="form-control divmonForm" type="text" placeholder="Enter Your Friend's Email ID" aria-label="friendEmail" id="friendEmail">
+              <button class="btn btn-primary" onclick="addFriend()">Add Friend</button>
             </div>
           </div>
         </div>

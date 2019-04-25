@@ -18,7 +18,7 @@ public class TransactionDAO
 
 	public List<Transaction> findTransactionsOfFriend(Friends friend)
 	{
-		String hql = "FROM Transaction AS ts WHERE (ts.borrowerId = ?1 AND ts.lenderId = ?2 ) OR (ts.borrowerId = ?2 AND ts.lenderId = ?1) ORDER BY ts.date";
+		String hql = "FROM Transaction AS ts WHERE ((ts.borrowerId = ?1 AND ts.lenderId = ?2 ) OR (ts.borrowerId = ?2 AND ts.lenderId = ?1)) ORDER BY ts.date";
 		
 		@SuppressWarnings("unchecked")
 		List<Transaction> transactionList = (List<Transaction>) entityManager.createQuery(hql)

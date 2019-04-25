@@ -1,6 +1,5 @@
 package com.iiitb.divmon.controller;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -17,49 +16,40 @@ import com.iiitb.divmon.service.GroupsService;
 import com.iiitb.divmon.service.UserService;
 
 @RestController
-public class GroupsController {
-	
+public class GroupsController
+{
+
 	@Autowired
 	private GroupsService groupsService;
-	
+
 	@Autowired
 	private UserService userService;
-	
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/creategroup")
 	public void createGroup(@RequestParam Groups groups)
 	{
-		
-//		Set<User> ust = new HashSet<User>();
-//		ust.add(userService.getUserById(1));
-//		ust.add(userService.getUserById(2));
-//		Groups g = new Groups();
-//		g.setName("test");
-//		g.setUserSet(ust);
 		groupsService.add(groups);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.PUT, value = "/addfriendstogroup/{id}")
-	public void addFriendsToGroup(@RequestParam List<Integer> friendsId , @PathVariable(name="id") int groupId)
+	public void addFriendsToGroup(@RequestParam List<Integer> friendsId, @PathVariable(name = "id") int groupId)
 	{
 		Groups groups = groupsService.getGroupById(groupId);
 		Set<User> ust = groups.getUserSet();
-		for(int userId : friendsId)
+		for (int userId : friendsId)
 		{
-		User user= userService.getUserById(userId);
-		ust.add(user);
+			User user = userService.getUserById(userId);
+			ust.add(user);
 		}
 		groups.setUserSet(ust);
 		groupsService.add(groups);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = "/getusersofgroup/{id}")
 	public Set<User> getUsersOfGroup(@PathVariable int id)
 	{
 		Groups group = groupsService.getUsersByGroupId(id);
-		Set<User> users =group.getUserSet();
+		Set<User> users = group.getUserSet();
 		return users;
-		
 	}
-
 }

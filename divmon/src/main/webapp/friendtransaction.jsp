@@ -39,6 +39,13 @@
         </div>
       <div id="transactionList"></div>
       </div>
+       <div class="media text-muted pt-3">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray w-100">
+            <div class="d-flex justify-content-center align-items-center w-50" style="margin-left:25%;">
+              <button class="btn btn-warning btn-block" onclick="settleAllTransactions()">Settle All Transactions</button>
+            </div>
+          </div>
+        </div>
       <div class="media text-muted pt-3">
           <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <div class="d-flex justify-content-between align-items-center w-100">
@@ -47,7 +54,7 @@
               <input class="form-control divmonForm" type="number" placeholder="Amount" aria-label="amount" id="amount">
               <input class="form-control divmonForm" type="number" placeholder="Share Amount" aria-label="share" id="share" onchange="calcSharePercent()">
               <input class="form-control divmonForm" type="number" placeholder="Share Percentage" aria-label="sharepercent" id="sharepercent" onchange="calcShareAmount()">
-              <button class="btn btn-success" onclick="addTransaction()">Add</button>
+              <button class="btn btn-primary" onclick="addTransaction()">Add</button>
             </div>
           </div>
         </div>

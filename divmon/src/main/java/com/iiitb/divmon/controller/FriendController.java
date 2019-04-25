@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.iiitb.divmon.bean.FriendTotal;
 import com.iiitb.divmon.bean.Friends;
 import com.iiitb.divmon.bean.User;
 import com.iiitb.divmon.service.FriendService;
@@ -30,6 +31,12 @@ public class FriendController
 		List<Integer> ids = friendService.showFriendsId(id);
 		List<User> friends = userService.getAllUserById(ids);
 		return friends;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/showfriendswithtotal/{id}")
+	public List<FriendTotal> showFriendsWithTotal(@PathVariable int id)
+	{
+		return friendService.friendsTransactionTotal(id);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/addfriend")
