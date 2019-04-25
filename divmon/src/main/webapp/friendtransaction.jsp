@@ -15,7 +15,7 @@
 <script src="/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
 
 <!-- Custom styles for this template -->
-<link href="/css/friends.css" rel="stylesheet">
+<link href="/css/pagetiles.css" rel="stylesheet">
 
 <!-- Custom Scripts -->
 <script src="/js/friendtransaction.js" type="text/javascript"></script>

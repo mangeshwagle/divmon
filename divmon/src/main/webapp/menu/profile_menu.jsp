@@ -34,6 +34,7 @@ function logout()
 						<span class="sr-only">(current)</span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="/friends.jsp">Friends</a></li>
+				<li class="nav-item"><a class="nav-link" href="/groups.jsp">Groups</a></li>
 				<li class="nav-item"><a class="nav-link" href="/transactions.jsp">Transactions</a></li>
 			</ul>
 			<ul class="navbar-nav px-3">

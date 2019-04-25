@@ -3,10 +3,12 @@ package com.iiitb.divmon.service;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.iiitb.divmon.bean.Groups;
 import com.iiitb.divmon.bean.User;
 import com.iiitb.divmon.repository.UserRepository;
 
@@ -65,5 +67,11 @@ public class UserService
 		User userFromDb = userRepository.findByEmail(email).orElse(null);
 
 		return userFromDb;
+	}
+	
+	public Set<Groups> getGroupsByUserId(int id)
+	{
+		Set<Groups> groupSet = userRepository.findById(id).get().getGroupSet();
+		return groupSet;
 	}
 }

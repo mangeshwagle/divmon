@@ -48,8 +48,6 @@ public class GroupsController
 	@RequestMapping(method = RequestMethod.GET, value = "/getusersofgroup/{id}")
 	public Set<User> getUsersOfGroup(@PathVariable int id)
 	{
-		Groups group = groupsService.getUsersByGroupId(id);
-		Set<User> users = group.getUserSet();
-		return users;
+		return groupsService.getUsersByGroupId(id);
 	}
 }

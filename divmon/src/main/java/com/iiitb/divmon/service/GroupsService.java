@@ -1,9 +1,12 @@
 package com.iiitb.divmon.service;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iiitb.divmon.bean.Groups;
+import com.iiitb.divmon.bean.User;
 import com.iiitb.divmon.repository.GroupsRepository;
 
 @Service
@@ -30,11 +33,10 @@ public class GroupsService
 
 	}
 
-	public Groups getUsersByGroupId(int gid)
+	public Set<User> getUsersByGroupId(int gid)
 	{
-		Groups group = groupsRepository.findById(gid).get();
-		return group;
-
+		Set<User> userSet = groupsRepository.findById(gid).get().getUserSet();
+		return userSet;
 	}
 
 }

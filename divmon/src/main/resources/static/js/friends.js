@@ -9,7 +9,6 @@ sessionStorage.removeItem("friend");
 
 function showFriends()
 {
-	//var api = "http://localhost:8055/showfriends/" + user.id;
 	var api = "http://localhost:8055/showfriendswithtotal/" + user.id;
 	var friendList = "";
 	$.get(api , function(data, status) {
