@@ -12,7 +12,7 @@ services:
       - my-db:/var/lib/mysql
 
   war:
-    image: divmon
+    image: anshgyl/divmon
     restart: always
     depends_on:
       - mysql-docker-container
