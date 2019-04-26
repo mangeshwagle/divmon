@@ -1,0 +1,26 @@
+version: "2"
+services:
+services:
+  mysql-docker-container:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=divmondb
+      - MYSQL_USER=divmon
+      - MYSQL_PASSWORD=divmon
+    volumes:
+      - my-db:/var/lib/mysql
+
+  war:
+    image: divmon
+    restart: always
+    depends_on:
+      - mysql-docker-container
+    ports:
+      - 8055:8055
+    expose:
+      - '8055'
+    command: java -jar Divmon.war
+
+volumes:
+  my-db: {}
