@@ -36,7 +36,7 @@ function showFriends()
 					    	'<strong class="text-gray-dark">' + data[i].user.name + '</strong>' +
 					    	'<strong class="text-gray-dark">' + oweString + '</strong>' +
 					    	'<strong class="text-gray-dark">₹' + data[i].total + '</strong>' +
-					    	'<button class="btn ' + buttonColor + '" onclick=friendTransaction(' + i + ')>Manage Transactions</button>' +
+					    	'<button class="btn ' + buttonColor + '" onclick="friendTransaction(' + i + ')">Manage Transactions</button>' +
 					    	'</div>' +
 					    	'<span class="d-block">' + data[i].user.email + '</span>' +
 					    	'</div>' +
@@ -56,7 +56,7 @@ function addFriend()
 						};
 	$.ajax
 	({
-		type : 'POST',
+		type : "POST",
 		url : "http://localhost:8055/addfriend",
 		data : friendship,
 		async: false,

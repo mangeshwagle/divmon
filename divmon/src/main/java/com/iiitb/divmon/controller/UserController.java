@@ -46,7 +46,7 @@ public class UserController
 
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/getgroupssofuser/{id}")
+	@RequestMapping(method = RequestMethod.GET, value = "/getgroupsofuser/{id}")
 	public Set<Groups> getGroupsOfUser(@PathVariable int id)
 	{
 		return userService.getGroupsByUserId(id);

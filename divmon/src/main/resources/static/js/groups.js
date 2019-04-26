@@ -9,19 +9,21 @@ sessionStorage.removeItem("group");
 
 function showGroups()
 {
-	var api = "http://localhost:8055/getgroupssofuser/" + user.id;
+	var api = "http://localhost:8055/getgroupsofuser/" + user.id;
 	var groupList = "";
-	$.get(api , function(data, status) {
+	$.get(api, function(data, status) {
 		groups = data;
 	    for(var i = 0; i < data.length; i++)
 	    {	
+	    	var userSize = groupUserCount(data[i].id);
 	    	groupList += 	'<div class="media text-muted pt-3">' +
 					    	'<div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">' +
 					    	'<div class="d-flex justify-content-between align-items-center w-100">' +
 					    	'<strong class="text-gray-dark">' + data[i].name + '</strong>' +
-					    	'<button class="btn btn-outline-success" onclick=manageGroup(' + i + ')>Manage Group</button>' +
+					    	'<button class="btn btn-outline-success" onclick="groupTransaction(' + i + ')">Manage Transactions</button>' +
+					    	'<button class="btn btn-outline-info" onclick="manageGroup(' + i + ')">Manage Group</button>' +
 					    	'</div>' +
-					    	'<span class="d-block">' + /*data[i].user.email + */'</span>' +
+					    	'<span class="d-block">Members: ' + userSize + '</span>' +
 					    	'</div>' +
 					    	'</div>';
 	    }
@@ -29,38 +31,44 @@ function showGroups()
 	});
 }
 
-function createGroup()
+function groupUserCount(id)
 {
-	var userSet = [];
-	userSet.push(user);
-	var groupName = document.getElementById("groupName").value;
-	var group =	JSON.stringify	({
-									"name" : groupName,
-									"userSet" : userSet
-								});
-	alert(group);
+	var api = "http://localhost:8055/getusercount/" + id;
+	var count = 0;
 	$.ajax
 	({
-		type : 'POST',
-		url : "http://localhost:8055/creategroup",
-		data : group,
+		type : "GET",
+		url : api,
+		data : user,
 		async: false,
 	    cache: false,
-		statusCode:
-		{
-			200:	function()
-					{
-						showGroups();
-					},
-			204:	function()
-					{
-						alert("Name could not be assigned");
-					}
+		error : function(jqXHR, exception) {
+		},
+		success : function(data) {
+			count = data;
 		}
 	});
+	return count;
 }
+
+function createGroup()
+{
+	var groupName = document.getElementById("groupName").value;
+	var api = "http://localhost:8055/creategroup/" + groupName + "/" + user.id;
+	$.get(api , function(data, status)
+	{
+		showGroups();
+	});
+}
+
+function groupTransaction(id)
+{
+	sessionStorage.setItem("group", JSON.stringify(groups[id]));
+	window.location.href = "grouptransaction.jsp";
+}
+
 function manageGroup(id)
 {
-	sessionStorage.setItem("group", JSON.stringify(group[id]));
-	window.location.href = "friendtransaction.jsp";
+	sessionStorage.setItem("group", JSON.stringify(groups[id]));
+	window.location.href = "groupmanage.jsp";
 }

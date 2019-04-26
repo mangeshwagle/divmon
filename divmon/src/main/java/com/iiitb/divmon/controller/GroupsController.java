@@ -1,10 +1,11 @@
 package com.iiitb.divmon.controller;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,23 +38,41 @@ public class GroupsController
 		groupsService.add(groups);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/adduserstogroup/{id}")
-	public void addUsersToGroup(@RequestParam List<String> emails, @PathVariable(name = "id") int groupId)
+	@RequestMapping(method = RequestMethod.POST, value = "/addusertogroup")
+	public ResponseEntity<Void> addUsersToGroup(@RequestParam int groupId, @RequestParam String email)
 	{
-		Groups groups = groupsService.getGroupById(groupId);
-		Set<User> ust = groups.getUserSet();
-		for (String email : emails)
+		Groups group = groupsService.getGroupById(groupId);
+		Set<User> ust = group.getUserSet();
+		User user = userService.getUserByEmail(email);
+		ust.add(user);
+		group.setUserSet(ust);
+		if (groupsService.add(group))
 		{
-			User user = userService.getUserByEmail(email);
-			ust.add(user);
+			return new ResponseEntity<Void>(HttpStatus.OK);
 		}
-		groups.setUserSet(ust);
-		groupsService.add(groups);
+	return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/getusersofgroup/{id}")
 	public Set<User> getUsersOfGroup(@PathVariable int id)
 	{
 		return groupsService.getUsersByGroupId(id);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/getusercount/{id}")
+	public int getUserCount(@PathVariable int id)
+	{
+		return groupsService.getUsersByGroupId(id).size();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/removeuserfromgroup/{groupId}/{userId}")
+	public void removeUserFromGroup(@PathVariable int groupId, @PathVariable int userId)
+	{
+		Groups group = groupsService.getGroupById(groupId);
+		Set<User> ust = group.getUserSet();
+		User user = userService.getUserById(userId);
+		ust.remove(user);
+		group.setUserSet(ust);
+		groupsService.add(group);
 	}
 }

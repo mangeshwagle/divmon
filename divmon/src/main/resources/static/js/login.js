@@ -9,7 +9,7 @@ function login()
 	});
 	$.ajax
 	({
-		type : 'POST',
+		type : "POST",
 		url : "http://localhost:8055/login",
 		contentType : "application/json",
 		data : user,

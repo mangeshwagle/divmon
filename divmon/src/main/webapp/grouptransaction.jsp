@@ -6,7 +6,7 @@
 <link rel="shortcut icon" href="/images/favicon.ico">
 <link rel="icon" type="image/png" href="/images/favicon.png">
 
-<title>Friends Transactions| DivMon</title>
+<title>Group Transactions| DivMon</title>
 
 <!-- Bootstrap core CSS -->
 <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +26,7 @@
 	<div role="main" class="container">
       <div class="my-3 p-3 bg-white rounded box-shadow">
       <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
           <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <div class="d-flex justify-content-between align-items-center w-100">
 				<h6>Description</h6>
@@ -35,7 +36,7 @@
 				<h6>Share</h6>				
             </div>
           </div>
-      </div>
+        </div>
       <div id="transactionList"></div>
       </div>
        <div class="media text-muted pt-3">

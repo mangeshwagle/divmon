@@ -14,7 +14,7 @@ function showTransactions()
 {
 	var api = "http://localhost:8055/transactionlist/" + user.id + "/" + friend.id;
 	var transactionList = "";
-	$.get(api , function(data, status) {
+	$.get(api, function(data, status) {
 	    for(var i = 0; i < data.length; i++)
 	    {
 	    	var d = new Date(data[i].date);
@@ -88,7 +88,7 @@ function addTransaction()
 							});
 	$.ajax
 	({
-		type : 'POST',
+		type : "POST",
 		url : "http://localhost:8055/transaction",
 		contentType : "application/json",
 		data : transaction,
@@ -122,7 +122,7 @@ function calcSharePercent()
 function settleTransaction(id)
 {
 	var api = "http://localhost:8055/settletransaction/" + id;
-	$.get(api , function(data, status)
+	$.get(api, function(data, status)
 	{
 		showTransactions();
 	});
@@ -131,7 +131,7 @@ function settleTransaction(id)
 function settleAllTransactions()
 {
 	var api = "http://localhost:8055/settlealltransactions/" + user.id + "/" + friend.id;
-	$.get(api , function(data, status)
+	$.get(api, function(data, status)
 	{
 		showTransactions();
 	});

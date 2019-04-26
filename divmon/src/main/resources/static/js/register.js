@@ -25,7 +25,7 @@ function register()
 	});
 	$.ajax
 	({
-		type : 'POST',
+		type : "POST",
 		url : "http://localhost:8055/register",
 		contentType : "application/json",
 		data : user,

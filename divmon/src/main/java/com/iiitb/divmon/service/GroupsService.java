@@ -16,14 +16,17 @@ public class GroupsService
 	@Autowired
 	private GroupsRepository groupsRepository;
 
-	public void add(Groups group)
+	public boolean add(Groups group)
 	{
 		try
 		{
 			groupsRepository.save(group);
-		} catch (Exception e)
+			return true;
+		}
+		catch (Exception e)
 		{
 			e.printStackTrace();
+			return false;
 		}
 	}
 
