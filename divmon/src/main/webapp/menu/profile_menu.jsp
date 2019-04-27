@@ -32,12 +32,14 @@ function logout()
 		</button>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="/profile.jsp">Profile
+				<!-- <li class="nav-item"><a class="nav-link" href="/profile.jsp">Profile
+						<span class="sr-only">(current)</span>
+				</a></li> -->
+				<li class="nav-item"><a class="nav-link" href="/friends.jsp">Friends
 						<span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="/friends.jsp">Friends</a></li>
 				<li class="nav-item"><a class="nav-link" href="/groups.jsp">Groups</a></li>
-				<li class="nav-item"><a class="nav-link" href="/transactions.jsp">Transactions</a></li>
+				<!-- <li class="nav-item"><a class="nav-link" href="/transactions.jsp">Transactions</a></li> -->
 			</ul>
 			<ul class="navbar-nav px-3">
 				<li class="nav-item text-nowrap"><a class="nav-link" href="#" onclick="logout()">Logout</a></li>
