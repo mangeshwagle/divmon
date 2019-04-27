@@ -1,4 +1,8 @@
 var group = JSON.parse(sessionStorage.getItem("group"));
+
+if(group == null)
+	window.location.href = "groups.jsp";
+
 $(document).ready(function() {
 	showFriends();
 })

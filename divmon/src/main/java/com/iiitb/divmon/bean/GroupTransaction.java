@@ -1,5 +1,7 @@
 package com.iiitb.divmon.bean;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +26,8 @@ public class GroupTransaction
 	
 	private double amount;
 	private double share;
+	private Date date;
+	private String description;
 
 	public int getId()
 	{
@@ -95,5 +99,28 @@ public class GroupTransaction
 	public void setGroupId(int groupId)
 	{
 		this.groupId = groupId;
+	}
+	public Date getDate()
+	{
+		return date;
+	}
+	public void setDate(Date date)
+	{
+		this.date = date;
+	}
+	public String getDescription()
+	{
+		return description;
+	}
+	public void setDescription(String description)
+	{
+		this.description = description;
+	}
+	@Override
+	public String toString()
+	{
+		return "GroupTransaction [id=" + id + ", billId=" + billId + ", groupId=" + groupId + ", borrowerId="
+				+ borrowerId + ", lenderId=" + lenderId + ", paid=" + paid + ", amount=" + amount + ", share=" + share
+				+ ", date=" + date + "]";
 	}
 }

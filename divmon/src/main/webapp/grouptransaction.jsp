@@ -18,7 +18,7 @@
 <link href="/css/pagetiles.css" rel="stylesheet">
 
 <!-- Custom Scripts -->
-<script src="/js/friendtransaction.js" type="text/javascript"></script>
+<script src="/js/grouptransaction.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -49,11 +49,9 @@
       <div class="media text-muted pt-3">
           <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <div class="d-flex justify-content-between align-items-center w-100">
-              <select class="form-control divmonForm" id="paidby"><option value="0">Paid By Me</option></select>
+              <select class="form-control divmonForm" id="paidby"></select>
               <input class="form-control divmonForm" type="text" placeholder="Description" aria-label="description" id="description">
               <input class="form-control divmonForm" type="number" placeholder="Amount" aria-label="amount" id="amount">
-              <input class="form-control divmonForm" type="number" placeholder="Share Amount" aria-label="share" id="share" onchange="calcSharePercent()">
-              <input class="form-control divmonForm" type="number" placeholder="Share Percentage" aria-label="sharepercent" id="sharepercent" onchange="calcShareAmount()">
               <button class="btn btn-primary" onclick="addTransaction()">Add</button>
             </div>
           </div>
